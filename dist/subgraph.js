@@ -2,10 +2,28 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CeramicSubgraph = void 0;
 const client_1 = require("@apollo/client");
+const core_1 = require("@enyo-web3/core");
 const schema_1 = require("@graphql-tools/schema");
-class CeramicSubgraph {
+class CeramicSubgraph extends core_1.EnyoSubgraph {
     schema(providers) {
         const ceramicProvider = providers.ceramic;
+        ceramicProvider.on('authenticatedChanged', authenticated => {
+            this.writeQuery({
+                query: (0, client_1.gql) `
+          query WriteCeramicAuthentication {
+            ceramic {
+              authenticated
+            }
+          }
+        `,
+                data: {
+                    ceramic: {
+                        __typename: 'Ceramic',
+                        authenticated,
+                    },
+                },
+            });
+        });
         return (0, schema_1.makeExecutableSchema)({
             typeDefs: this.typeDefs(),
             resolvers: {

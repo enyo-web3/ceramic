@@ -1,5 +1,4 @@
 import { useQuery, useMutation } from '@apollo/client';
-import { CeramicApi } from '@ceramicnetwork/common';
 import gql from 'graphql-tag';
 import { useCallback } from 'react';
 
@@ -8,7 +7,6 @@ import type { CeramicProvider } from './provider';
 const QUERY = gql`
   query UseCeramicQuery {
     ceramic {
-      client
       authenticated
     }
   }
@@ -35,7 +33,6 @@ const LOAD_STREAM = gql`
 `;
 
 export interface UseCeramicResult {
-  client: CeramicApi;
   authenticated: boolean;
   loading: boolean;
   createStream: CeramicProvider['createStream'];
@@ -45,7 +42,7 @@ export interface UseCeramicResult {
 export function useCeramic() {
   // note(carlos): has to be no-cache so `client` doesn't get frozen
   // by cache
-  const { data, loading } = useQuery(QUERY, { fetchPolicy: 'no-cache' });
+  const { data, loading } = useQuery(QUERY);
   const [createStreamMutation] = useMutation(CREATE_STREAM);
   const [loadStreamMutation] = useMutation(LOAD_STREAM);
 
@@ -69,7 +66,6 @@ export function useCeramic() {
 
   return {
     loading,
-    client: data?.ceramic.client || null,
     authenticated: data?.ceramic.authenticated || false,
     createStream,
     loadStream,

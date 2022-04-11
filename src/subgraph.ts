@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
-import type { EnyoSubgraph } from '@enyo-web3/core';
+import { EnyoSubgraph } from '@enyo-web3/core';
 import { makeExecutableSchema } from '@graphql-tools/schema';
 
 import type { CeramicProvider, ProvidersWithCeramic } from './provider';
@@ -14,9 +14,27 @@ interface LoadStreamMutationArgs {
   streamId: Parameters<CeramicProvider['loadStream']>[0];
 }
 
-export class CeramicSubgraph implements EnyoSubgraph<ProvidersWithCeramic> {
+export class CeramicSubgraph extends EnyoSubgraph<ProvidersWithCeramic> {
   schema(providers: ProvidersWithCeramic) {
     const ceramicProvider = providers.ceramic;
+
+    ceramicProvider.on('authenticatedChanged', authenticated => {
+      this.writeQuery({
+        query: gql`
+          query WriteCeramicAuthentication {
+            ceramic {
+              authenticated
+            }
+          }
+        `,
+        data: {
+          ceramic: {
+            __typename: 'Ceramic',
+            authenticated,
+          },
+        },
+      });
+    });
 
     return makeExecutableSchema({
       typeDefs: this.typeDefs(),

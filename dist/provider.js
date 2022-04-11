@@ -16,8 +16,10 @@ exports.CeramicProvider = void 0;
 const http_client_1 = __importDefault(require("@ceramicnetwork/http-client"));
 const stream_tile_1 = require("@ceramicnetwork/stream-tile");
 const dids_1 = require("dids");
-class CeramicProvider {
+const events_1 = require("events");
+class CeramicProvider extends events_1.EventEmitter {
     constructor(options) {
+        super();
         this.client = 'apiURL' in options ? new http_client_1.default(options.apiURL) : options.client;
         this.didProvider = options.didProvider;
         this.authenticated = false;
@@ -40,6 +42,7 @@ class CeramicProvider {
     }
     setAuthenticated(value) {
         this.authenticated = value;
+        this.emit('authenticatedChanged', this.authenticated);
     }
 }
 exports.CeramicProvider = CeramicProvider;

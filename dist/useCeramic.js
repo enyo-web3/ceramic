@@ -19,7 +19,6 @@ const react_1 = require("react");
 const QUERY = (0, graphql_tag_1.default) `
   query UseCeramicQuery {
     ceramic {
-      client
       authenticated
     }
   }
@@ -45,7 +44,7 @@ const LOAD_STREAM = (0, graphql_tag_1.default) `
 function useCeramic() {
     // note(carlos): has to be no-cache so `client` doesn't get frozen
     // by cache
-    const { data, loading } = (0, client_1.useQuery)(QUERY, { fetchPolicy: 'no-cache' });
+    const { data, loading } = (0, client_1.useQuery)(QUERY);
     const [createStreamMutation] = (0, client_1.useMutation)(CREATE_STREAM);
     const [loadStreamMutation] = (0, client_1.useMutation)(LOAD_STREAM);
     const createStream = (0, react_1.useCallback)((content, metadata, opts) => __awaiter(this, void 0, void 0, function* () {
@@ -58,7 +57,6 @@ function useCeramic() {
     }), [loadStreamMutation]);
     return {
         loading,
-        client: (data === null || data === void 0 ? void 0 : data.ceramic.client) || null,
         authenticated: (data === null || data === void 0 ? void 0 : data.ceramic.authenticated) || false,
         createStream,
         loadStream,

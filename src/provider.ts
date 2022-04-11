@@ -3,6 +3,7 @@ import CeramicClient from '@ceramicnetwork/http-client';
 import { TileDocument, TileMetadataArgs } from '@ceramicnetwork/stream-tile';
 import type { EnyoProvider } from '@enyo-web3/core';
 import { DID, DIDOptions, DIDProvider } from 'dids';
+import { EventEmitter } from 'events';
 
 export interface ProvidersWithCeramic {
   ceramic: CeramicProvider;
@@ -15,12 +16,14 @@ export type CeramicProviderOptions = {
   didProvider?: (() => Promise<DIDProvider>) | null;
 } & ClientOrAPIUrl;
 
-export class CeramicProvider implements EnyoProvider {
+export class CeramicProvider extends EventEmitter implements EnyoProvider {
   client: CeramicApi;
   didProvider?: (() => Promise<DIDProvider>) | null;
   authenticated: boolean;
 
   constructor(options: CeramicProviderOptions) {
+    super();
+
     this.client = 'apiURL' in options ? new CeramicClient(options.apiURL) : options.client;
     this.didProvider = options.didProvider;
     this.authenticated = false;
@@ -44,5 +47,7 @@ export class CeramicProvider implements EnyoProvider {
 
   private setAuthenticated(value: boolean) {
     this.authenticated = value;
+
+    this.emit('authenticatedChanged', this.authenticated);
   }
 }

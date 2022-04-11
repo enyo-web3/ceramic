@@ -6,12 +6,16 @@ import { renderHook, act } from '@testing-library/react-hooks';
 import { useCeramic } from '../src';
 import { Wrapper } from './wrapper';
 
-test('ceramic client is initialized', async () => {
+test('can authenticate', async () => {
   const { result, waitFor } = renderHook(() => useCeramic(), { wrapper: Wrapper });
 
   await waitFor(() => !result.current.loading);
 
-  expect(result.current.client).toEqual(expect.anything());
+  await act(async () => {
+    await result.current.createStream({ test: 'test' });
+  });
+
+  expect(result.current.authenticated).toEqual(true);
 });
 
 test('stream can be created', async () => {

@@ -2,6 +2,7 @@ import { CeramicApi, CreateOpts, LoadOpts } from '@ceramicnetwork/common';
 import { TileDocument, TileMetadataArgs } from '@ceramicnetwork/stream-tile';
 import type { EnyoProvider } from '@enyo-web3/core';
 import { DIDOptions, DIDProvider } from 'dids';
+import { EventEmitter } from 'events';
 export interface ProvidersWithCeramic {
     ceramic: CeramicProvider;
 }
@@ -14,7 +15,7 @@ export declare type CeramicProviderOptions = {
     didResolver?: DIDOptions['resolver'];
     didProvider?: (() => Promise<DIDProvider>) | null;
 } & ClientOrAPIUrl;
-export declare class CeramicProvider implements EnyoProvider {
+export declare class CeramicProvider extends EventEmitter implements EnyoProvider {
     client: CeramicApi;
     didProvider?: (() => Promise<DIDProvider>) | null;
     authenticated: boolean;
