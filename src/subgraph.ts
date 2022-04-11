@@ -14,7 +14,7 @@ interface LoadStreamMutationArgs {
   streamId: Parameters<CeramicProvider['loadStream']>[0];
 }
 
-export class CermaicSubgraph implements EnyoSubgraph<ProvidersWithCeramic> {
+export class CeramicSubgraph implements EnyoSubgraph<ProvidersWithCeramic> {
   schema(providers: ProvidersWithCeramic) {
     const ceramicProvider = providers.ceramic;
 

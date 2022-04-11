@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CermaicSubgraph = void 0;
+exports.CeramicSubgraph = void 0;
 const client_1 = require("@apollo/client");
 const schema_1 = require("@graphql-tools/schema");
-class CermaicSubgraph {
+class CeramicSubgraph {
     schema(providers) {
         const ceramicProvider = providers.ceramic;
         return (0, schema_1.makeExecutableSchema)({
@@ -72,5 +72,5 @@ class CermaicSubgraph {
     `;
     }
 }
-exports.CermaicSubgraph = CermaicSubgraph;
+exports.CeramicSubgraph = CeramicSubgraph;
 //# sourceMappingURL=subgraph.js.map

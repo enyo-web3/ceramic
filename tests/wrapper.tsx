@@ -5,13 +5,13 @@ import { Ed25519Provider } from 'key-did-provider-ed25519';
 import KeyDidResolver from 'key-did-resolver';
 import React from 'react';
 
-import { CeramicProvider, CermaicSubgraph } from '../src';
+import { CeramicProvider, CeramicSubgraph } from '../src';
 
 const seed = randomBytes(32);
 const didProvider = () => Promise.resolve(new Ed25519Provider(seed));
 
 const supergraph = new EnyoSupergraph({
-  subgraphs: [new CermaicSubgraph()],
+  subgraphs: [new CeramicSubgraph()],
   providers: {
     ceramic: new CeramicProvider({ client: ceramic, didProvider, didResolver: { ...KeyDidResolver.getResolver() } }),
   },
