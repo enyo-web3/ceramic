@@ -1,3 +1,4 @@
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -7,15 +8,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import CeramicClient from '@ceramicnetwork/http-client';
-import { TileDocument } from '@ceramicnetwork/stream-tile';
-import { DID } from 'dids';
-export class CeramicProvider {
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.CeramicProvider = void 0;
+const http_client_1 = __importDefault(require("@ceramicnetwork/http-client"));
+const stream_tile_1 = require("@ceramicnetwork/stream-tile");
+const dids_1 = require("dids");
+class CeramicProvider {
     constructor(options) {
-        this.client = 'apiURL' in options ? new CeramicClient(options.apiURL) : options.client;
+        this.client = 'apiURL' in options ? new http_client_1.default(options.apiURL) : options.client;
         this.didProvider = options.didProvider;
         this.authenticated = false;
-        this.client.did = new DID({ resolver: options.didResolver });
+        this.client.did = new dids_1.DID({ resolver: options.didResolver });
     }
     createStream(content, metadata, opts) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -24,16 +30,17 @@ export class CeramicProvider {
                 yield this.client.did.authenticate();
                 this.setAuthenticated(true);
             }
-            return TileDocument.create(this.client, content, metadata, Object.assign({}, opts));
+            return stream_tile_1.TileDocument.create(this.client, content, metadata, Object.assign({}, opts));
         });
     }
     loadStream(streamId, opts) {
         return __awaiter(this, void 0, void 0, function* () {
-            return TileDocument.load(this.client, streamId, opts);
+            return stream_tile_1.TileDocument.load(this.client, streamId, opts);
         });
     }
     setAuthenticated(value) {
         this.authenticated = value;
     }
 }
+exports.CeramicProvider = CeramicProvider;
 //# sourceMappingURL=provider.js.map

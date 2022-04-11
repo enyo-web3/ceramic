@@ -1,9 +1,12 @@
-import { gql } from '@apollo/client';
-import { makeExecutableSchema } from '@graphql-tools/schema';
-export class CermaicSubgraph {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.CermaicSubgraph = void 0;
+const client_1 = require("@apollo/client");
+const schema_1 = require("@graphql-tools/schema");
+class CermaicSubgraph {
     schema(providers) {
         const ceramicProvider = providers.ceramic;
-        return makeExecutableSchema({
+        return (0, schema_1.makeExecutableSchema)({
             typeDefs: this.typeDefs(),
             resolvers: {
                 Query: {
@@ -36,7 +39,7 @@ export class CermaicSubgraph {
         });
     }
     typeDefs() {
-        return gql `
+        return (0, client_1.gql) `
       type Query {
         ceramic: Ceramic!
       }
@@ -69,4 +72,5 @@ export class CermaicSubgraph {
     `;
     }
 }
+exports.CermaicSubgraph = CermaicSubgraph;
 //# sourceMappingURL=subgraph.js.map

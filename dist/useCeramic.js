@@ -1,3 +1,4 @@
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -7,10 +8,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { useQuery, useMutation } from '@apollo/client';
-import gql from 'graphql-tag';
-import { useCallback } from 'react';
-const QUERY = gql `
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.useCeramic = void 0;
+const client_1 = require("@apollo/client");
+const graphql_tag_1 = __importDefault(require("graphql-tag"));
+const react_1 = require("react");
+const QUERY = (0, graphql_tag_1.default) `
   query UseCeramicQuery {
     ceramic {
       client
@@ -18,7 +24,7 @@ const QUERY = gql `
     }
   }
 `;
-const CREATE_STREAM = gql `
+const CREATE_STREAM = (0, graphql_tag_1.default) `
   mutation UseCeramicCreateStream(
     $content: CeramicContent!
     $metadata: CeramicStreamMetadata
@@ -29,24 +35,24 @@ const CREATE_STREAM = gql `
     }
   }
 `;
-const LOAD_STREAM = gql `
+const LOAD_STREAM = (0, graphql_tag_1.default) `
   mutation UseCeramicLoadStream($streamId: CeramicStreamId!, $opts: CeramicLoadStreamOpts) {
     ceramic {
       loadStream(streamId: $streamId, opts: $opts)
     }
   }
 `;
-export function useCeramic() {
+function useCeramic() {
     // note(carlos): has to be no-cache so `client` doesn't get frozen
     // by cache
-    const { data, loading } = useQuery(QUERY, { fetchPolicy: 'no-cache' });
-    const [createStreamMutation] = useMutation(CREATE_STREAM);
-    const [loadStreamMutation] = useMutation(LOAD_STREAM);
-    const createStream = useCallback((content, metadata, opts) => __awaiter(this, void 0, void 0, function* () {
+    const { data, loading } = (0, client_1.useQuery)(QUERY, { fetchPolicy: 'no-cache' });
+    const [createStreamMutation] = (0, client_1.useMutation)(CREATE_STREAM);
+    const [loadStreamMutation] = (0, client_1.useMutation)(LOAD_STREAM);
+    const createStream = (0, react_1.useCallback)((content, metadata, opts) => __awaiter(this, void 0, void 0, function* () {
         const result = yield createStreamMutation({ variables: { content, metadata, opts } });
         return result.data.ceramic.createStream;
     }), [createStreamMutation]);
-    const loadStream = useCallback((streamId, opts) => __awaiter(this, void 0, void 0, function* () {
+    const loadStream = (0, react_1.useCallback)((streamId, opts) => __awaiter(this, void 0, void 0, function* () {
         const result = yield loadStreamMutation({ variables: { streamId, opts } });
         return result.data.ceramic.loadStream;
     }), [loadStreamMutation]);
@@ -58,4 +64,5 @@ export function useCeramic() {
         loadStream,
     };
 }
+exports.useCeramic = useCeramic;
 //# sourceMappingURL=useCeramic.js.map
