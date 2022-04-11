@@ -40,8 +40,6 @@ export interface UseCeramicResult {
 }
 
 export function useCeramic() {
-  // note(carlos): has to be no-cache so `client` doesn't get frozen
-  // by cache
   const { data, loading } = useQuery(QUERY);
   const [createStreamMutation] = useMutation(CREATE_STREAM);
   const [loadStreamMutation] = useMutation(LOAD_STREAM);

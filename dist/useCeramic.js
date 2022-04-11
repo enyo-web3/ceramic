@@ -42,8 +42,6 @@ const LOAD_STREAM = (0, graphql_tag_1.default) `
   }
 `;
 function useCeramic() {
-    // note(carlos): has to be no-cache so `client` doesn't get frozen
-    // by cache
     const { data, loading } = (0, client_1.useQuery)(QUERY);
     const [createStreamMutation] = (0, client_1.useMutation)(CREATE_STREAM);
     const [loadStreamMutation] = (0, client_1.useMutation)(LOAD_STREAM);
