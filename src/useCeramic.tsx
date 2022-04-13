@@ -32,6 +32,19 @@ const LOAD_STREAM = gql`
   }
 `;
 
+const UPDATE_STREAM = gql`
+  mutation UseCeramicCreateStream(
+    $streamId: CeramicStreamId!
+    $content: CeramicContent!
+    $metadata: CeramicStreamMetadata
+    $opts: CeramicCreateStreamOpts
+  ) {
+    ceramic {
+      updateStream(streamId: $streamId, content: $content, metadata: $metadata, opts: $opts)
+    }
+  }
+`;
+
 export interface UseCeramicResult {
   authenticated: boolean;
   loading: boolean;
@@ -43,6 +56,7 @@ export function useCeramic() {
   const { data, loading } = useQuery(QUERY);
   const [createStreamMutation] = useMutation(CREATE_STREAM);
   const [loadStreamMutation] = useMutation(LOAD_STREAM);
+  const [updateStreamMutation] = useMutation(UPDATE_STREAM);
 
   const createStream: CeramicProvider['createStream'] = useCallback(
     async (content, metadata, opts) => {
@@ -62,10 +76,20 @@ export function useCeramic() {
     [loadStreamMutation]
   );
 
+  const updateStream: CeramicProvider['updateStream'] = useCallback(
+    async (streamId, content, metadata, opts) => {
+      const result = await updateStreamMutation({ variables: { streamId, content, metadata, opts } });
+
+      return result.data.ceramic.updateStream;
+    },
+    [updateStreamMutation]
+  );
+
   return {
     loading,
     authenticated: data?.ceramic.authenticated || false,
     createStream,
     loadStream,
+    updateStream,
   };
 }

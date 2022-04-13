@@ -42,3 +42,22 @@ test('stream can be loaded', async () => {
     expect(stream.content).toEqual({ test: 'test' });
   });
 });
+
+test('stream can be updated', async () => {
+  const { result, waitFor } = renderHook(() => useCeramic(), { wrapper: Wrapper });
+
+  await waitFor(() => !result.current.loading);
+
+  await act(async () => {
+    const createdStream = await result.current.createStream({ test: 'test' });
+    let stream = await result.current.loadStream(createdStream.id);
+
+    expect(stream.content).toEqual({ test: 'test' });
+
+    await result.current.updateStream(createdStream.id, { test: 'test2' });
+
+    stream = await result.current.loadStream(createdStream.id);
+
+    expect(stream.content).toEqual({ test: 'test2' });
+  });
+});

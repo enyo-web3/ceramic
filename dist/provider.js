@@ -32,12 +32,23 @@ class CeramicProvider extends events_1.EventEmitter {
                 yield this.client.did.authenticate();
                 this.setAuthenticated(true);
             }
-            return stream_tile_1.TileDocument.create(this.client, content, metadata, Object.assign({}, opts));
+            return stream_tile_1.TileDocument.create(this.client, content, metadata, Object.assign(Object.assign({}, opts), { pin: true }));
         });
     }
     loadStream(streamId, opts) {
         return __awaiter(this, void 0, void 0, function* () {
             return stream_tile_1.TileDocument.load(this.client, streamId, opts);
+        });
+    }
+    updateStream(streamId, content, metadata, opts) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (this.client.did && !this.client.did.authenticated && this.didProvider) {
+                this.client.did.setProvider(yield this.didProvider());
+                yield this.client.did.authenticate();
+                this.setAuthenticated(true);
+            }
+            const stream = yield stream_tile_1.TileDocument.load(this.client, streamId, opts);
+            return stream.update(content, metadata, Object.assign(Object.assign({}, opts), { pin: true }));
         });
     }
     setAuthenticated(value) {

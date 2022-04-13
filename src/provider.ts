@@ -1,4 +1,4 @@
-import { CeramicApi, CreateOpts, LoadOpts } from '@ceramicnetwork/common';
+import { CeramicApi, CreateOpts, LoadOpts, UpdateOpts } from '@ceramicnetwork/common';
 import CeramicClient from '@ceramicnetwork/http-client';
 import { TileDocument, TileMetadataArgs } from '@ceramicnetwork/stream-tile';
 import type { EnyoProvider } from '@enyo-web3/core';
@@ -38,11 +38,28 @@ export class CeramicProvider extends EventEmitter implements EnyoProvider {
       this.setAuthenticated(true);
     }
 
-    return TileDocument.create(this.client, content, metadata, { ...opts });
+    return TileDocument.create(this.client, content, metadata, { ...opts, pin: true });
   }
 
   async loadStream(streamId: Parameters<typeof TileDocument.load>[1], opts?: LoadOpts) {
     return TileDocument.load(this.client, streamId, opts);
+  }
+
+  async updateStream(
+    streamId: Parameters<typeof TileDocument.load>[1],
+    content: unknown,
+    metadata?: TileMetadataArgs,
+    opts?: UpdateOpts
+  ) {
+    if (this.client.did && !this.client.did.authenticated && this.didProvider) {
+      this.client.did.setProvider(await this.didProvider());
+      await this.client.did.authenticate();
+      this.setAuthenticated(true);
+    }
+
+    const stream = await TileDocument.load(this.client, streamId, opts);
+
+    return stream.update(content, metadata, { ...opts, pin: true });
   }
 
   private setAuthenticated(value: boolean) {

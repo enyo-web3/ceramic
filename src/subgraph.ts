@@ -14,6 +14,13 @@ interface LoadStreamMutationArgs {
   streamId: Parameters<CeramicProvider['loadStream']>[0];
 }
 
+interface UpdateStreamMutationArgs {
+  streamId: Parameters<CeramicProvider['loadStream']>[0];
+  content: Parameters<CeramicProvider['createStream']>[0];
+  metadata: Parameters<CeramicProvider['createStream']>[1];
+  opts: Parameters<CeramicProvider['createStream']>[2];
+}
+
 export class CeramicSubgraph extends EnyoSubgraph<ProvidersWithCeramic> {
   schema(providers: ProvidersWithCeramic) {
     const ceramicProvider = providers.ceramic;
@@ -64,6 +71,9 @@ export class CeramicSubgraph extends EnyoSubgraph<ProvidersWithCeramic> {
           loadStream(_, args: LoadStreamMutationArgs) {
             return ceramicProvider.loadStream(args.streamId);
           },
+          updateStream(_, args: UpdateStreamMutationArgs) {
+            return ceramicProvider.updateStream(args.streamId, args.content, args.metadata, args.opts);
+          },
         },
       },
     });
@@ -91,6 +101,12 @@ export class CeramicSubgraph extends EnyoSubgraph<ProvidersWithCeramic> {
           opts: CeramicCreateStreamOpts
         ): TileDocument!
         loadStream(streamId: CeramicStreamId!, opts: CeramicLoadStreamOpts): TileDocument!
+        updateStream(
+          streamId: CeramicStreamId!
+          content: CeramicContent!
+          metadata: CeramicStreamMetadata
+          opts: CeramicCreateStreamOpts
+        ): Void
       }
 
       scalar CeramicClient
@@ -100,6 +116,7 @@ export class CeramicSubgraph extends EnyoSubgraph<ProvidersWithCeramic> {
       scalar CeramicCreateStreamOpts
       scalar CeramicLoadStreamOpts
       scalar TileDocument
+      scalar Void
     `;
   }
 }

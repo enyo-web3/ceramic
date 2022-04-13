@@ -52,6 +52,9 @@ class CeramicSubgraph extends core_1.EnyoSubgraph {
                     loadStream(_, args) {
                         return ceramicProvider.loadStream(args.streamId);
                     },
+                    updateStream(_, args) {
+                        return ceramicProvider.updateStream(args.streamId, args.content, args.metadata, args.opts);
+                    },
                 },
             },
         });
@@ -78,6 +81,12 @@ class CeramicSubgraph extends core_1.EnyoSubgraph {
           opts: CeramicCreateStreamOpts
         ): TileDocument!
         loadStream(streamId: CeramicStreamId!, opts: CeramicLoadStreamOpts): TileDocument!
+        updateStream(
+          streamId: CeramicStreamId!
+          content: CeramicContent!
+          metadata: CeramicStreamMetadata
+          opts: CeramicCreateStreamOpts
+        ): Void
       }
 
       scalar CeramicClient
@@ -87,6 +96,7 @@ class CeramicSubgraph extends core_1.EnyoSubgraph {
       scalar CeramicCreateStreamOpts
       scalar CeramicLoadStreamOpts
       scalar TileDocument
+      scalar Void
     `;
     }
 }

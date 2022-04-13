@@ -41,10 +41,23 @@ const LOAD_STREAM = (0, graphql_tag_1.default) `
     }
   }
 `;
+const UPDATE_STREAM = (0, graphql_tag_1.default) `
+  mutation UseCeramicCreateStream(
+    $streamId: CeramicStreamId!
+    $content: CeramicContent!
+    $metadata: CeramicStreamMetadata
+    $opts: CeramicCreateStreamOpts
+  ) {
+    ceramic {
+      updateStream(streamId: $streamId, content: $content, metadata: $metadata, opts: $opts)
+    }
+  }
+`;
 function useCeramic() {
     const { data, loading } = (0, client_1.useQuery)(QUERY);
     const [createStreamMutation] = (0, client_1.useMutation)(CREATE_STREAM);
     const [loadStreamMutation] = (0, client_1.useMutation)(LOAD_STREAM);
+    const [updateStreamMutation] = (0, client_1.useMutation)(UPDATE_STREAM);
     const createStream = (0, react_1.useCallback)((content, metadata, opts) => __awaiter(this, void 0, void 0, function* () {
         const result = yield createStreamMutation({ variables: { content, metadata, opts } });
         return result.data.ceramic.createStream;
@@ -53,11 +66,16 @@ function useCeramic() {
         const result = yield loadStreamMutation({ variables: { streamId, opts } });
         return result.data.ceramic.loadStream;
     }), [loadStreamMutation]);
+    const updateStream = (0, react_1.useCallback)((streamId, content, metadata, opts) => __awaiter(this, void 0, void 0, function* () {
+        const result = yield updateStreamMutation({ variables: { streamId, content, metadata, opts } });
+        return result.data.ceramic.updateStream;
+    }), [updateStreamMutation]);
     return {
         loading,
         authenticated: (data === null || data === void 0 ? void 0 : data.ceramic.authenticated) || false,
         createStream,
         loadStream,
+        updateStream,
     };
 }
 exports.useCeramic = useCeramic;

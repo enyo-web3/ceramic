@@ -1,4 +1,4 @@
-import { CeramicApi, CreateOpts, LoadOpts } from '@ceramicnetwork/common';
+import { CeramicApi, CreateOpts, LoadOpts, UpdateOpts } from '@ceramicnetwork/common';
 import { TileDocument, TileMetadataArgs } from '@ceramicnetwork/stream-tile';
 import type { EnyoProvider } from '@enyo-web3/core';
 import { DIDOptions, DIDProvider } from 'dids';
@@ -22,6 +22,7 @@ export declare class CeramicProvider extends EventEmitter implements EnyoProvide
     constructor(options: CeramicProviderOptions);
     createStream(content: unknown, metadata?: TileMetadataArgs, opts?: CreateOpts): Promise<TileDocument<unknown>>;
     loadStream(streamId: Parameters<typeof TileDocument.load>[1], opts?: LoadOpts): Promise<TileDocument<unknown>>;
+    updateStream(streamId: Parameters<typeof TileDocument.load>[1], content: unknown, metadata?: TileMetadataArgs, opts?: UpdateOpts): Promise<void>;
     private setAuthenticated;
 }
 export {};
