@@ -8,19 +8,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CeramicProvider = void 0;
-const http_client_1 = __importDefault(require("@ceramicnetwork/http-client"));
+const http_client_1 = require("@ceramicnetwork/http-client");
 const stream_tile_1 = require("@ceramicnetwork/stream-tile");
 const dids_1 = require("dids");
 const events_1 = require("events");
 class CeramicProvider extends events_1.EventEmitter {
     constructor(options) {
         super();
-        this.client = 'apiURL' in options ? new http_client_1.default(options.apiURL) : options.client;
+        this.client = 'apiURL' in options ? new http_client_1.CeramicClient(options.apiURL) : options.client;
         this.didProvider = options.didProvider;
         this.authenticated = false;
         this.client.did = new dids_1.DID({ resolver: options.didResolver });

@@ -1,5 +1,5 @@
 import { CeramicApi, CreateOpts, LoadOpts, UpdateOpts } from '@ceramicnetwork/common';
-import CeramicClient from '@ceramicnetwork/http-client';
+import { CeramicClient } from '@ceramicnetwork/http-client';
 import { TileDocument, TileMetadataArgs } from '@ceramicnetwork/stream-tile';
 import type { EnyoProvider } from '@enyo-web3/core';
 import { DID, DIDOptions, DIDProvider } from 'dids';

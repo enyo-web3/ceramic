@@ -40,10 +40,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/preset-react", "virtual:a9a19b630a588155c92f4ae8a8db8144917ee83e3cd36bb76901eb84a4f5c22dc9e3132b483ed08b52ebbd0b97f69550387746aa970daf04db052b2bb054ab12#npm:7.16.7"],\
             ["@babel/preset-typescript", "virtual:a9a19b630a588155c92f4ae8a8db8144917ee83e3cd36bb76901eb84a4f5c22dc9e3132b483ed08b52ebbd0b97f69550387746aa970daf04db052b2bb054ab12#npm:7.16.7"],\
             ["@babel/runtime", "npm:7.17.9"],\
-            ["@ceramicnetwork/common", "npm:1.11.0"],\
-            ["@ceramicnetwork/http-client", "npm:1.5.7"],\
-            ["@ceramicnetwork/stream-tile", "npm:1.5.7"],\
-            ["@ceramicnetwork/streamid", "npm:1.3.9"],\
+            ["@ceramicnetwork/common", "npm:2.0.0"],\
+            ["@ceramicnetwork/http-client", "npm:2.0.0"],\
+            ["@ceramicnetwork/stream-tile", "npm:2.0.0"],\
+            ["@ceramicnetwork/streamid", "npm:2.0.0"],\
             ["@enyo-web3/core", "virtual:8c35fb3e963bf545c5b6b02ca4f10d81700a45d6817c8b4f6165d5e775a3fd934e099b2bb146f242c615bd6999928b9121d9fe59a80561ec00f894541eae86cd#https://github.com/enyo-web3/core.git#branch=master&commit=384053647bdd2a45cae57c8823cafa2ec43052ee"],\
             ["@ethersproject/abi", "npm:5.6.0"],\
             ["@graphql-tools/schema", "virtual:8c35fb3e963bf545c5b6b02ca4f10d81700a45d6817c8b4f6165d5e775a3fd934e099b2bb146f242c615bd6999928b9121d9fe59a80561ec00f894541eae86cd#npm:8.3.7"],\
@@ -2975,25 +2975,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@ceramicnetwork/common", [\
-        ["npm:1.11.0", {\
-          "packageLocation": "./.yarn/cache/@ceramicnetwork-common-npm-1.11.0-f05193b8e8-43931b663e.zip/node_modules/@ceramicnetwork/common/",\
-          "packageDependencies": [\
-            ["@ceramicnetwork/common", "npm:1.11.0"],\
-            ["@ceramicnetwork/streamid", "npm:1.3.9"],\
-            ["@overnightjs/logger", "npm:1.2.1"],\
-            ["abort-controller", "npm:3.0.0"],\
-            ["caip", "npm:1.0.0"],\
-            ["cids", "npm:1.1.9"],\
-            ["colors", "npm:1.3.3"],\
-            ["cross-fetch", "npm:3.1.5"],\
-            ["flat", "npm:5.0.2"],\
-            ["lodash.clonedeep", "npm:4.5.0"],\
-            ["logfmt", "npm:1.3.2"],\
-            ["rxjs", "npm:7.5.5"],\
-            ["uint8arrays", "npm:2.1.10"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
         ["npm:1.11.1-rc.0", {\
           "packageLocation": "./.yarn/cache/@ceramicnetwork-common-npm-1.11.1-rc.0-9cd1855c7c-fd7b8bb176.zip/node_modules/@ceramicnetwork/common/",\
           "packageDependencies": [\
@@ -3010,6 +2991,25 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["logfmt", "npm:1.3.2"],\
             ["rxjs", "npm:7.5.5"],\
             ["uint8arrays", "npm:2.1.10"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:2.0.0", {\
+          "packageLocation": "./.yarn/cache/@ceramicnetwork-common-npm-2.0.0-480e070cc5-001740c251.zip/node_modules/@ceramicnetwork/common/",\
+          "packageDependencies": [\
+            ["@ceramicnetwork/common", "npm:2.0.0"],\
+            ["@ceramicnetwork/streamid", "npm:2.0.0"],\
+            ["abort-controller", "npm:3.0.0"],\
+            ["caip", "npm:1.0.0"],\
+            ["ceramic-cacao", "npm:1.0.0"],\
+            ["cross-fetch", "npm:3.1.5"],\
+            ["flat", "npm:5.0.2"],\
+            ["jet-logger", "npm:1.1.5"],\
+            ["lodash.clonedeep", "npm:4.5.0"],\
+            ["logfmt", "npm:1.3.2"],\
+            ["multiformats", "npm:9.6.4"],\
+            ["rxjs", "npm:7.5.5"],\
+            ["uint8arrays", "npm:3.0.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -3051,15 +3051,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@ceramicnetwork/http-client", [\
-        ["npm:1.5.7", {\
-          "packageLocation": "./.yarn/cache/@ceramicnetwork-http-client-npm-1.5.7-6414b1fc1e-2d8eb1a643.zip/node_modules/@ceramicnetwork/http-client/",\
+        ["npm:2.0.0", {\
+          "packageLocation": "./.yarn/cache/@ceramicnetwork-http-client-npm-2.0.0-b92a8c9f49-363d73e095.zip/node_modules/@ceramicnetwork/http-client/",\
           "packageDependencies": [\
-            ["@ceramicnetwork/http-client", "npm:1.5.7"],\
-            ["@ceramicnetwork/common", "npm:1.11.0"],\
-            ["@ceramicnetwork/stream-caip10-link", "npm:1.2.9"],\
-            ["@ceramicnetwork/stream-tile", "npm:1.5.7"],\
-            ["@ceramicnetwork/streamid", "npm:1.3.9"],\
-            ["query-string", "npm:7.0.1"],\
+            ["@ceramicnetwork/http-client", "npm:2.0.0"],\
+            ["@ceramicnetwork/common", "npm:2.0.0"],\
+            ["@ceramicnetwork/stream-caip10-link", "npm:2.0.0"],\
+            ["@ceramicnetwork/stream-tile", "npm:2.0.0"],\
+            ["@ceramicnetwork/streamid", "npm:2.0.0"],\
+            ["query-string", "npm:7.1.1"],\
             ["rxjs", "npm:7.5.5"]\
           ],\
           "linkType": "HARD"\
@@ -3110,13 +3110,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "HARD"\
         }],\
-        ["npm:1.2.9", {\
-          "packageLocation": "./.yarn/cache/@ceramicnetwork-stream-caip10-link-npm-1.2.9-a85b47446f-f9a37e2c4d.zip/node_modules/@ceramicnetwork/stream-caip10-link/",\
+        ["npm:2.0.0", {\
+          "packageLocation": "./.yarn/cache/@ceramicnetwork-stream-caip10-link-npm-2.0.0-68c7865918-17e0eb5174.zip/node_modules/@ceramicnetwork/stream-caip10-link/",\
           "packageDependencies": [\
-            ["@ceramicnetwork/stream-caip10-link", "npm:1.2.9"],\
-            ["@ceramicnetwork/common", "npm:1.11.0"],\
-            ["@ceramicnetwork/streamid", "npm:1.3.9"],\
-            ["caip", "npm:0.9.2"],\
+            ["@ceramicnetwork/stream-caip10-link", "npm:2.0.0"],\
+            ["@ceramicnetwork/common", "npm:2.0.0"],\
+            ["@ceramicnetwork/streamid", "npm:2.0.0"],\
+            ["caip", "npm:1.0.0"],\
             ["did-resolver", "npm:3.2.0"]\
           ],\
           "linkType": "HARD"\
@@ -3135,18 +3135,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@ceramicnetwork/stream-tile", [\
-        ["npm:1.5.7", {\
-          "packageLocation": "./.yarn/cache/@ceramicnetwork-stream-tile-npm-1.5.7-38f6ddfa1a-da1294a64e.zip/node_modules/@ceramicnetwork/stream-tile/",\
-          "packageDependencies": [\
-            ["@ceramicnetwork/stream-tile", "npm:1.5.7"],\
-            ["@ceramicnetwork/common", "npm:1.11.0"],\
-            ["@ceramicnetwork/streamid", "npm:1.3.9"],\
-            ["@stablelib/random", "npm:1.0.1"],\
-            ["fast-json-patch", "npm:2.2.1"],\
-            ["uint8arrays", "npm:2.1.10"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
         ["npm:1.5.8-rc.0", {\
           "packageLocation": "./.yarn/cache/@ceramicnetwork-stream-tile-npm-1.5.8-rc.0-73630de260-18761aabb4.zip/node_modules/@ceramicnetwork/stream-tile/",\
           "packageDependencies": [\
@@ -3156,6 +3144,19 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@stablelib/random", "npm:1.0.1"],\
             ["fast-json-patch", "npm:2.2.1"],\
             ["uint8arrays", "npm:2.1.10"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:2.0.0", {\
+          "packageLocation": "./.yarn/cache/@ceramicnetwork-stream-tile-npm-2.0.0-d0aaf5d08a-16819cd6e8.zip/node_modules/@ceramicnetwork/stream-tile/",\
+          "packageDependencies": [\
+            ["@ceramicnetwork/stream-tile", "npm:2.0.0"],\
+            ["@ceramicnetwork/common", "npm:2.0.0"],\
+            ["@ceramicnetwork/streamid", "npm:2.0.0"],\
+            ["@ipld/dag-cbor", "npm:7.0.1"],\
+            ["@stablelib/random", "npm:1.0.1"],\
+            ["fast-json-patch", "npm:3.1.1"],\
+            ["uint8arrays", "npm:3.0.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -3187,15 +3188,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "HARD"\
         }],\
-        ["npm:1.3.9", {\
-          "packageLocation": "./.yarn/cache/@ceramicnetwork-streamid-npm-1.3.9-9dc6d46b4d-030cd674a2.zip/node_modules/@ceramicnetwork/streamid/",\
+        ["npm:2.0.0", {\
+          "packageLocation": "./.yarn/cache/@ceramicnetwork-streamid-npm-2.0.0-2015d222fa-405d900576.zip/node_modules/@ceramicnetwork/streamid/",\
           "packageDependencies": [\
-            ["@ceramicnetwork/streamid", "npm:1.3.9"],\
-            ["cids", "npm:1.1.9"],\
-            ["ipld-dag-cbor", "npm:0.17.1"],\
-            ["multibase", "npm:4.0.6"],\
+            ["@ceramicnetwork/streamid", "npm:2.0.0"],\
+            ["@ipld/dag-cbor", "npm:7.0.1"],\
+            ["multiformats", "npm:9.6.4"],\
             ["typescript-memoize", "npm:1.1.0"],\
-            ["uint8arrays", "npm:2.1.10"],\
+            ["uint8arrays", "npm:3.0.0"],\
             ["varint", "npm:6.0.0"]\
           ],\
           "linkType": "HARD"\
@@ -3213,10 +3213,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/preset-react", "virtual:a9a19b630a588155c92f4ae8a8db8144917ee83e3cd36bb76901eb84a4f5c22dc9e3132b483ed08b52ebbd0b97f69550387746aa970daf04db052b2bb054ab12#npm:7.16.7"],\
             ["@babel/preset-typescript", "virtual:a9a19b630a588155c92f4ae8a8db8144917ee83e3cd36bb76901eb84a4f5c22dc9e3132b483ed08b52ebbd0b97f69550387746aa970daf04db052b2bb054ab12#npm:7.16.7"],\
             ["@babel/runtime", "npm:7.17.9"],\
-            ["@ceramicnetwork/common", "npm:1.11.0"],\
-            ["@ceramicnetwork/http-client", "npm:1.5.7"],\
-            ["@ceramicnetwork/stream-tile", "npm:1.5.7"],\
-            ["@ceramicnetwork/streamid", "npm:1.3.9"],\
+            ["@ceramicnetwork/common", "npm:2.0.0"],\
+            ["@ceramicnetwork/http-client", "npm:2.0.0"],\
+            ["@ceramicnetwork/stream-tile", "npm:2.0.0"],\
+            ["@ceramicnetwork/streamid", "npm:2.0.0"],\
             ["@enyo-web3/core", "virtual:8c35fb3e963bf545c5b6b02ca4f10d81700a45d6817c8b4f6165d5e775a3fd934e099b2bb146f242c615bd6999928b9121d9fe59a80561ec00f894541eae86cd#https://github.com/enyo-web3/core.git#branch=master&commit=384053647bdd2a45cae57c8823cafa2ec43052ee"],\
             ["@ethersproject/abi", "npm:5.6.0"],\
             ["@graphql-tools/schema", "virtual:8c35fb3e963bf545c5b6b02ca4f10d81700a45d6817c8b4f6165d5e775a3fd934e099b2bb146f242c615bd6999928b9121d9fe59a80561ec00f894541eae86cd#npm:8.3.7"],\
@@ -4182,6 +4182,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@humanwhocodes-object-schema-npm-1.2.1-eb622b5d0e-a824a1ec31.zip/node_modules/@humanwhocodes/object-schema/",\
           "packageDependencies": [\
             ["@humanwhocodes/object-schema", "npm:1.2.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@ipld/dag-cbor", [\
+        ["npm:7.0.1", {\
+          "packageLocation": "./.yarn/cache/@ipld-dag-cbor-npm-7.0.1-902f6d2a97-54690acf43.zip/node_modules/@ipld/dag-cbor/",\
+          "packageDependencies": [\
+            ["@ipld/dag-cbor", "npm:7.0.1"],\
+            ["cborg", "npm:1.9.1"],\
+            ["multiformats", "npm:9.6.4"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -6433,6 +6444,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["apg-js", [\
+        ["npm:4.1.1", {\
+          "packageLocation": "./.yarn/cache/apg-js-npm-4.1.1-f4a2553532-7c59482655.zip/node_modules/apg-js/",\
+          "packageDependencies": [\
+            ["apg-js", "npm:4.1.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["aproba", [\
         ["npm:2.0.0", {\
           "packageLocation": "./.yarn/cache/aproba-npm-2.0.0-8716bcfde6-5615cadcfb.zip/node_modules/aproba/",\
@@ -7554,6 +7574,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["caip", "npm:1.0.0"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:1.1.0", {\
+          "packageLocation": "./.yarn/cache/caip-npm-1.1.0-b180396f3f-9c56d91994.zip/node_modules/caip/",\
+          "packageDependencies": [\
+            ["caip", "npm:1.1.0"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["call-bind", [\
@@ -7646,6 +7673,29 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["cbor", "npm:6.0.1"],\
             ["bignumber.js", "npm:9.0.2"],\
             ["nofilter", "npm:1.0.4"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["cborg", [\
+        ["npm:1.9.1", {\
+          "packageLocation": "./.yarn/cache/cborg-npm-1.9.1-2f7b1cb492-856d0bb10d.zip/node_modules/cborg/",\
+          "packageDependencies": [\
+            ["cborg", "npm:1.9.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["ceramic-cacao", [\
+        ["npm:1.0.0", {\
+          "packageLocation": "./.yarn/cache/ceramic-cacao-npm-1.0.0-f4e7088479-62ea1e0183.zip/node_modules/ceramic-cacao/",\
+          "packageDependencies": [\
+            ["ceramic-cacao", "npm:1.0.0"],\
+            ["@ethersproject/wallet", "npm:5.6.0"],\
+            ["@ipld/dag-cbor", "npm:7.0.1"],\
+            ["apg-js", "npm:4.1.1"],\
+            ["caip", "npm:1.1.0"],\
+            ["multiformats", "npm:9.6.4"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -7927,6 +7977,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["colors", [\
+        ["npm:1.3.0", {\
+          "packageLocation": "./.yarn/cache/colors-npm-1.3.0-30e1fed395-b631fa963d.zip/node_modules/colors/",\
+          "packageDependencies": [\
+            ["colors", "npm:1.3.0"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["npm:1.3.3", {\
           "packageLocation": "./.yarn/cache/colors-npm-1.3.3-a3124fa6df-c57f0aa2b7.zip/node_modules/colors/",\
           "packageDependencies": [\
@@ -10103,6 +10160,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["fast-json-patch", "npm:2.2.1"],\
             ["fast-deep-equal", "npm:2.0.1"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:3.1.1", {\
+          "packageLocation": "./.yarn/cache/fast-json-patch-npm-3.1.1-7e8bb70a45-c4525b61b2.zip/node_modules/fast-json-patch/",\
+          "packageDependencies": [\
+            ["fast-json-patch", "npm:3.1.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -13244,6 +13308,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:17.0.23"],\
             ["merge-stream", "npm:2.0.0"],\
             ["supports-color", "npm:8.1.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["jet-logger", [\
+        ["npm:1.1.5", {\
+          "packageLocation": "./.yarn/cache/jet-logger-npm-1.1.5-5f56e175ba-eb5267c4c3.zip/node_modules/jet-logger/",\
+          "packageDependencies": [\
+            ["jet-logger", "npm:1.1.5"],\
+            ["colors", "npm:1.3.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -16508,17 +16582,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["query-string", [\
-        ["npm:7.0.1", {\
-          "packageLocation": "./.yarn/cache/query-string-npm-7.0.1-4631368591-2eb990c0ea.zip/node_modules/query-string/",\
-          "packageDependencies": [\
-            ["query-string", "npm:7.0.1"],\
-            ["decode-uri-component", "npm:0.2.0"],\
-            ["filter-obj", "npm:1.1.0"],\
-            ["split-on-first", "npm:1.1.0"],\
-            ["strict-uri-encode", "npm:2.0.0"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
         ["npm:7.1.1", {\
           "packageLocation": "./.yarn/cache/query-string-npm-7.1.1-55c6f31f52-b227d1f588.zip/node_modules/query-string/",\
           "packageDependencies": [\
